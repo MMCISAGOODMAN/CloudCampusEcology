@@ -1,0 +1,49 @@
+server:
+  port: 8001
+# 日志配置
+logging:
+  level:
+    com.service.daka: debug
+    org.springframework: warn  
+spring:
+  application:
+    name: service-daka
+  devtools:
+    restart:
+      enabled: true
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      maxFileSize: 5MB  #单位必须大写MB或不写(即为B)
+      maxRequestSize: 10MB
+  
+  
+feign: 
+  hystrix: 
+    enabled: true
+
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url: 
+       defaultZone: http://localhost:7001/eureka
+       #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/      
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true     #访问路径可以显示IP地址     
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' 
+
+#datasource
+daka:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:MySQL://localhost:3306/rising?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
+  username: root
+  password: root
