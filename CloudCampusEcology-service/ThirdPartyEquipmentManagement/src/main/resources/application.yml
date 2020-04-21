@@ -43,6 +43,6 @@ management:
 #datasource
 thirdparty:
   driverClassName: com.mysql.jdbc.Driver
-  url: jdbc:MySQL://localhost:3306/rising?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
+  url: jdbc:MySQL://114.115.173.102:3306/thirdparty?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
   username: root
   password: root
