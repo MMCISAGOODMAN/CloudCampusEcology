@@ -1,7 +1,7 @@
 package com.service.thirdparty.controller;
 
 import com.service.thirdparty.feign.RemoteDakaService;
-import com.service.thirdparty.service.ThirdPartyService;
+import com.service.thirdparty.service.DemoService;
 import com.service.thirdparty.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * @ClassName ThirdPartyController
+ * @ClassName DemoController
  * @Description TODO
  * @Author mamingcong
  * @Date 2020/4/17 13:59
@@ -20,11 +20,11 @@ import javax.annotation.Resource;
  */
 @Api(description = "第三方设备纳管控制器")
 @RestController
-@RequestMapping("/thirdParty")
-public class ThirdPartyController {
+@RequestMapping("/demo")
+public class DemoController {
 
     @Resource
-    private ThirdPartyService thirdPartyService;
+    private DemoService thirdPartyService;
 
     @Resource
     private RemoteDakaService remoteDakaService;

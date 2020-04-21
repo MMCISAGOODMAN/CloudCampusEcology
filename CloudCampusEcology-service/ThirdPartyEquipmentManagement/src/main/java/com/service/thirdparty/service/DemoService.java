@@ -8,7 +8,7 @@ package com.service.thirdparty.service;
  * @Version 1.0
  */
 //@FeignClient("network-liuliang")
-public interface ThirdPartyService {
+public interface DemoService {
     //@GetMapping("/liuliang/getFeign")
     String getFeign();
 

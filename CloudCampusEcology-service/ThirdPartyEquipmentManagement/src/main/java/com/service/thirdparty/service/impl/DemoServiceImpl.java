@@ -1,10 +1,8 @@
 package com.service.thirdparty.service.impl;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.service.thirdparty.service.BaseService;
-import com.service.thirdparty.service.ThirdPartyService;
-import com.service.thirdparty.utils.StringUtils;
+import com.service.thirdparty.service.DemoService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -23,7 +21,7 @@ import java.util.*;
  * @Version 1.0
  */
 @Service
-public class ThirdPartyServiceImpl implements ThirdPartyService , BaseService {
+public class DemoServiceImpl implements DemoService, BaseService {
 
     @Resource
     private RestTemplate restTemplate;

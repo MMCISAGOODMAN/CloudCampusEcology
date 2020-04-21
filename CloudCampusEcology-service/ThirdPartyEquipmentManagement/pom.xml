@@ -54,7 +54,6 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -71,7 +70,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
 
         <!-- spring-boot-devtools -->
         <dependency>
@@ -99,6 +97,17 @@
             <artifactId>pagehelper</artifactId>
             <version>4.1.6</version>
         </dependency>
+
+        <!--redis依赖开始-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!--redis依赖结束-->
     </dependencies>
     <build>
         <plugins>

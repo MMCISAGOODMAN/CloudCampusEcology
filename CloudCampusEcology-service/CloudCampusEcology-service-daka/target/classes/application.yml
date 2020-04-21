@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8083
 # 日志配置
 logging:
   level:
@@ -7,7 +7,7 @@ logging:
     org.springframework: warn  
 spring:
   application:
-    name: service-thirdparty
+    name: service-daka
   devtools:
     restart:
       enabled: true
@@ -20,14 +20,8 @@ spring:
     multipart:
       maxFileSize: 5MB  #单位必须大写MB或不写(即为B)
       maxRequestSize: 10MB
-  #redis配置
-  redis:
-    host: localhost
-    database: 1
-    port: 6379
-    password:
-    timeout: 6000ms
-
+  
+  
 feign: 
   hystrix: 
     enabled: true
@@ -48,8 +42,8 @@ management:
         include: '*' 
 
 #datasource
-thirdparty:
+daka:
   driverClassName: com.mysql.jdbc.Driver
-  url: jdbc:MySQL://114.115.173.102:3306/thirdparty?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
+  url: jdbc:MySQL://localhost:3306/rising?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
   username: root
   password: root

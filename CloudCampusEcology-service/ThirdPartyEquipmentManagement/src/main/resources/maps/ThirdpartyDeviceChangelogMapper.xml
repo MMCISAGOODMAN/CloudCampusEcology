@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.service.thirdparty.mapper.ThirdpartyDeviceChangelogMapper">
+  <resultMap id="BaseResultMap" type="com.service.thirdparty.model.ThirdpartyDeviceChangelog">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="change_type" jdbcType="VARCHAR" property="changeType" />
+    <result column="change_before" jdbcType="VARCHAR" property="changeBefore" />
+    <result column="change_after" jdbcType="VARCHAR" property="changeAfter" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, device_id, change_type, change_before, change_after, create_time
+  </sql>
+  <select id="selectByExample" parameterType="com.service.thirdparty.model.ThirdpartyDeviceChangelogExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from thirdparty_device_changelog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from thirdparty_device_changelog
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from thirdparty_device_changelog
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.service.thirdparty.model.ThirdpartyDeviceChangelogExample">
+    delete from thirdparty_device_changelog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.service.thirdparty.model.ThirdpartyDeviceChangelog">
+    insert into thirdparty_device_changelog (id, device_id, change_type, 
+      change_before, change_after, create_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR}, #{changeType,jdbcType=VARCHAR}, 
+      #{changeBefore,jdbcType=VARCHAR}, #{changeAfter,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.service.thirdparty.model.ThirdpartyDeviceChangelog">
+    insert into thirdparty_device_changelog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="changeType != null">
+        change_type,
+      </if>
+      <if test="changeBefore != null">
+        change_before,
+      </if>
+      <if test="changeAfter != null">
+        change_after,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="changeType != null">
+        #{changeType,jdbcType=VARCHAR},
+      </if>
+      <if test="changeBefore != null">
+        #{changeBefore,jdbcType=VARCHAR},
+      </if>
+      <if test="changeAfter != null">
+        #{changeAfter,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.service.thirdparty.model.ThirdpartyDeviceChangelogExample" resultType="java.lang.Long">
+    select count(*) from thirdparty_device_changelog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update thirdparty_device_changelog
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceId != null">
+        device_id = #{record.deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.changeType != null">
+        change_type = #{record.changeType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.changeBefore != null">
+        change_before = #{record.changeBefore,jdbcType=VARCHAR},
+      </if>
+      <if test="record.changeAfter != null">
+        change_after = #{record.changeAfter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update thirdparty_device_changelog
+    set id = #{record.id,jdbcType=VARCHAR},
+      device_id = #{record.deviceId,jdbcType=VARCHAR},
+      change_type = #{record.changeType,jdbcType=VARCHAR},
+      change_before = #{record.changeBefore,jdbcType=VARCHAR},
+      change_after = #{record.changeAfter,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.service.thirdparty.model.ThirdpartyDeviceChangelog">
+    update thirdparty_device_changelog
+    <set>
+      <if test="deviceId != null">
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="changeType != null">
+        change_type = #{changeType,jdbcType=VARCHAR},
+      </if>
+      <if test="changeBefore != null">
+        change_before = #{changeBefore,jdbcType=VARCHAR},
+      </if>
+      <if test="changeAfter != null">
+        change_after = #{changeAfter,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.service.thirdparty.model.ThirdpartyDeviceChangelog">
+    update thirdparty_device_changelog
+    set device_id = #{deviceId,jdbcType=VARCHAR},
+      change_type = #{changeType,jdbcType=VARCHAR},
+      change_before = #{changeBefore,jdbcType=VARCHAR},
+      change_after = #{changeAfter,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
